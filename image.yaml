@@ -1,0 +1,31 @@
+schema_version: 1
+name: "custom-rh-sso-7-image"
+description: "Custom Rh-SSO 7 image"
+version: "7.6.3.GA-1"
+
+from: "registry.redhat.io/ubi8/ubi-minimal"
+
+labels:
+ - name: "com.redhat.component"
+   value: "custom-rh-sso-container"
+
+envs:
+  - name: "RH_SSO_VERSION"
+    value: "7.6.3.GA"
+
+modules:
+  repositories:
+    - name: my-custom-modules
+      path: modules
+  install:
+    - name: "demo.module"
+      version: "1.0"
+
+packages:
+  manager: microdnf
+  install:
+    - hostname
+
+run:
+  cmd:
+    - "/tmp/hello_world.sh"

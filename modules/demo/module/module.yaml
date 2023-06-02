@@ -1,0 +1,6 @@
+schema_version: 1
+name: "demo.module"
+version: "1.0"
+# envs:
+execute:
+  - script: run_my_script.sh
